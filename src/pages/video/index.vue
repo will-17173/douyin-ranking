@@ -66,7 +66,7 @@
 </style>
 
 <script>
-import { WIN_WIDTH } from '@/utils/system';
+import SYSTEM from '@/utils/system';
 import VideoList from '@/common/components/video/list'
 
 export default {
@@ -166,7 +166,7 @@ export default {
   },
 
   created() {
-    if(WIN_WIDTH < 360){
+    if(SYSTEM.WIN_WIDTH < 360){
       this.maxCategoriesNum = 10;
     }
   },
