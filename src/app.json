@@ -1,13 +1,15 @@
 {
   "pages": [
+    "pages/video/main",
     "pages/search/main",
     "pages/index/main"
+    
     
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#161617",
-    "navigationBarTitleText": "首页",
+    "navigationBarTitleText": "抖音排行榜",
     "navigationBarTextStyle": "white",
     "backgroundColor": "#24252a"
   },
@@ -22,7 +24,7 @@
         "selectedIconPath": "/static/img/home-active.png"
       },
       {
-        "pagePath": "pages/index/main",
+        "pagePath": "pages/video/main",
         "text": "热门视频",
         "iconPath": "/static/img/video.png",
         "selectedIconPath": "/static/img/video-active.png"
