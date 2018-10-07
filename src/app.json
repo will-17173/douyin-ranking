@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/search/main",
+    "pages/index/main"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#161617",
+    "navigationBarTitleText": "首页",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#24252a"
+  },
+  "tabBar": {
+    "color": "#a1a2a2",
+    "selectedColor": "#facd13",
+    "backgroundColor": "#161616",
+    "list": [{
+        "pagePath": "pages/index/main",
+        "text": "首页",
+        "iconPath": "/static/img/home.png",
+        "selectedIconPath": "/static/img/home-active.png"
+      },
+      {
+        "pagePath": "pages/index/main",
+        "text": "热门视频",
+        "iconPath": "/static/img/video.png",
+        "selectedIconPath": "/static/img/video-active.png"
+      },
+      {
+        "pagePath": "pages/index/main",
+        "text": "热门音乐",
+        "iconPath": "/static/img/music.png",
+        "selectedIconPath": "/static/img/music-active.png"
+      },
+      {
+        "pagePath": "pages/index/main",
+        "text": "播主排行",
+        "iconPath": "/static/img/rank.png",
+        "selectedIconPath": "/static/img/rank-active.png"
+      }
+    ]
+  }
+}
