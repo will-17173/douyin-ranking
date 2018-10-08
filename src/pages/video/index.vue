@@ -101,51 +101,51 @@ export default {
           name: '创意'
         },
         {
-          id: 0,
+          id: 6,
           name: '美女'
         },
         {
-          id: 1,
+          id: 7,
           name: '帅哥'
         },
         {
-          id: 2,
+          id: 8,
           name: '宠物'
         },
         {
-          id: 3,
+          id: 9,
           name: '情感'
         },
         {
-          id: 4,
+          id: 10,
           name: '搞笑'
         },
         {
-          id: 5,
+          id: 11,
           name: '创意'
         },
         {
-          id: 0,
+          id: 12,
           name: '美女'
         },
         {
-          id: 1,
+          id: 13,
           name: '帅哥'
         },
         {
-          id: 2,
+          id: 14,
           name: '宠物'
         },
         {
-          id: 3,
+          id: 15,
           name: '情感'
         },
         {
-          id: 4,
+          id: 16,
           name: '搞笑'
         },
         {
-          id: 5,
+          id: 17,
           name: '创意'
         }
       ]
