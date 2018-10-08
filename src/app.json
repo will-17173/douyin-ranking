@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/music/main",
     "pages/video/main",
     "pages/search/main",
     "pages/index/main"
@@ -30,7 +31,7 @@
         "selectedIconPath": "/static/img/video-active.png"
       },
       {
-        "pagePath": "pages/index/main",
+        "pagePath": "pages/music/main",
         "text": "热门音乐",
         "iconPath": "/static/img/music.png",
         "selectedIconPath": "/static/img/music-active.png"
