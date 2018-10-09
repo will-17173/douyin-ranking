@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "热门视频",
+  "enablePullDownRefresh": true,
+  "disableScroll": false,
+  "usingComponents": {
+    "i-load-more": "/static/iview/load-more/index",
+    "i-spin": "/static/iview/spin/index"
+  }
+}

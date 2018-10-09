@@ -12,7 +12,8 @@
     "navigationBarBackgroundColor": "#161617",
     "navigationBarTitleText": "抖音排行榜",
     "navigationBarTextStyle": "white",
-    "backgroundColor": "#24252a"
+    "backgroundColor": "#24252a",
+    "enablePullDownRefresh": false
   },
   "tabBar": {
     "color": "#a1a2a2",

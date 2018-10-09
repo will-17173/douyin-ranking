@@ -1,17 +1,17 @@
 <template>
     <div class="video-list">
         <div class="head">
-            <div class="title">视频 <span class="title-number">64334条</span></div>
+            <div class="title">视频 <span class="title-number">{{total}}条</span></div>
             <div class="switch-time">
               <ul>
-                <li class="curent">24小时</li>
-                <li>近7天</li>
+                <li :class="{curent: currentType == 0}" @click="filter({time: 1}, 0)">24小时</li>
+                <li :class="{curent: currentType == 1}" @click="filter({time: 2}, 1)">近7天</li>
               </ul>
             </div>
             <div class="sort">综合排序</div>
         </div>
         <div class="list">
-            <Item />
+            <Item v-for="item in listData" :key="item.id" :itemData="item" />
         </div>
     </div>
 </template>
@@ -89,8 +89,27 @@
 <script>
 import Item from "./item";
 export default {
+  data(){
+    return {
+      currentType: 0
+    }
+  },
+  props: {
+    listData: {
+      type: Array
+    },
+    total: {
+      type: Number
+    }
+  },
   components: {
     Item
+  },
+  methods: {
+    filter(param, tabIndex){
+      this.currentType = tabIndex;
+      this.$bus.$emit('filter', param);
+    }
   }
 };
 </script>
