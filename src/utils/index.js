@@ -1,9 +1,9 @@
-function formatNumber(n) {
+export function formatNumber(n) {
   const str = n.toString();
   return str[1] ? str : `0${str}`;
 }
 
-function formatTime(date) {
+export function formatTime(date) {
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
   const day = date.getDate();
@@ -19,7 +19,7 @@ function formatTime(date) {
 }
 
 // 时间格式化
-const timeAgo = (secondTime) => {
+export const timeAgo = (secondTime) => {
   const time = new Date(secondTime * 1000);
   const today = new Date();
 
@@ -48,15 +48,15 @@ const timeAgo = (secondTime) => {
   }
 
   if (
-    time.getDate() === today.getDate()
-    && time.getMonth() === today.getMonth()
+    time.getDate() === today.getDate() &&
+    time.getMonth() === today.getMonth()
   ) {
     return `${hour}:${minute}`;
   }
 
   if (
-    time.getDate() === today.getDate() - 1
-    && time.getMonth() === today.getMonth()
+    time.getDate() === today.getDate() - 1 &&
+    time.getMonth() === today.getMonth()
   ) {
     return `昨日 ${hour}:${minute}`;
   }
@@ -65,20 +65,20 @@ const timeAgo = (secondTime) => {
 };
 
 // 显示繁忙提示
-const showBusy = text => wx.showToast({
+export const showBusy = text => wx.showToast({
   title: text,
   icon: 'loading',
   duration: 10000,
 });
 
 // 显示成功提示
-const showSuccess = text => wx.showToast({
+export const showSuccess = text => wx.showToast({
   title: text,
   icon: 'success',
 });
 
 // 显示失败提示
-const showModel = (title, content) => {
+export const showModel = (title, content) => {
   wx.hideToast();
 
   wx.showModal({
@@ -94,7 +94,7 @@ const showModel = (title, content) => {
 // c.10000~99999,显示X.X 万
 // d.100000以上，显示XX万
 // 上万时，小数点后保留一位，且不是整数，显示+
-const formatNumUnit = (n) => {
+export const formatNumUnit = (n) => {
   let dotted = -1;
   let afterDotted = 0;
   n += 0;
@@ -120,7 +120,7 @@ const formatNumUnit = (n) => {
 };
 
 // 模板替换
-const replaceTmpl = (str, options) => {
+export const replaceTmpl = (str, options) => {
   for (const key in options) {
     if (options.hasOwnProperty(key)) {
       const value = options[key];
@@ -131,7 +131,7 @@ const replaceTmpl = (str, options) => {
 };
 
 // 函数去抖动
-const debounce = (func, wait) => {
+export const debounce = (func, wait) => {
   let timer = null;
   return function () {
     const ctx = this;

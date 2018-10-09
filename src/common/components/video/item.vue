@@ -1,28 +1,17 @@
 <template>
   <div class="item">
-      <div class="img"><img src="/static/img/5.png" alt="" mode="widthFix"></div>
+      <div class="img"><img :src="itemData.img" alt="" mode="widthFix"></div>
       <div class="text">
-        <div class="v-title">记住：你是公主殿下、你要是哭了。他们都该死…</div>
+        <div class="v-title">{{itemData.title}}</div>
         <div class="v-info">
           <ul>
-            <li class="hot">91.7</li>
-            <li class="like">12.1万</li>
+            <li class="hot">{{itemData.rate}}</li>
+            <li class="like">{{itemData.likes}}</li>
           </ul>
-          23小时前
+          {{time}}
         </div>
-        <ul class="v-tag">
-          <li>公主</li>
-          <li>公主</li>
-          <li>公主</li>
-          <li>公主</li>
-          <li>公主公主</li>
-          <li>公主</li>
-          <li>公主公主</li>
-          <li>公主</li>
-          <li>公主</li>
-          <li>公主</li>
-          <li>公主</li>
-          <li>公主</li>
+        <ul class="v-tag" v-for="(tag, index) in tags" :key="index">
+          <li>{{tag}}</li>
         </ul>
       </div>
   </div>
@@ -106,7 +95,23 @@
 </style>
 
 <script>
+import { timeAgo } from '@/utils'
+
 export default {
+  props: {
+    itemData: {
+      type: Object,
+      default: {}
+    }
+  },
+  computed: {
+    tags(){
+      return this.itemData.tags.split(',');
+    },
+    time(){
+      return timeAgo(this.itemData.createAt)
+    }
+  }
     
 }
 </script>
