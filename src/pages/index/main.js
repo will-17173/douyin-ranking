@@ -7,8 +7,7 @@ app.$mount();
 export default {
   config: {
     navigationBarTitleText: 'title',
-    usingComponents: {
-      'i-button': '~/iview/button/index',
-    },
+    enablePullDownRefresh: false,
+    usingComponents: {},
   },
 };
