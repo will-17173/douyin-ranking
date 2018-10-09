@@ -7,27 +7,27 @@
       <scroll-view scroll-x class="scroll-view">
         <div class="item">
           <div class="img"><img src="/static/img/2.png" alt="" mode="widthFix"></div>
-          <div class="text">在枯一在要</div>
+          <div class="text">4394人参与</div>
         </div>
         <div class="item">
           <div class="img"><img src="/static/img/2.png" alt="" mode="widthFix"></div>
-          <div class="text">在枯一在要</div>
+          <div class="text">4394人参与</div>
         </div>
         <div class="item">
           <div class="img"><img src="/static/img/2.png" alt="" mode="widthFix"></div>
-          <div class="text">在枯一在要</div>
+          <div class="text">4394人参与</div>
         </div>
         <div class="item">
           <div class="img"><img src="/static/img/2.png" alt="" mode="widthFix"></div>
-          <div class="text">在枯一在要</div>
+          <div class="text">4394人参与</div>
         </div>
         <div class="item">
           <div class="img"><img src="/static/img/2.png" alt="" mode="widthFix"></div>
-          <div class="text">在枯一在要</div>
+          <div class="text">4394人参与</div>
         </div>
         <div class="item">
           <div class="img"><img src="/static/img/2.png" alt="" mode="widthFix"></div>
-          <div class="text">在枯一在要</div>
+          <div class="text">4394人参与</div>
         </div>
       </scroll-view>
     </div>

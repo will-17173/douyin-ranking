@@ -89,7 +89,7 @@
         </div>
       </div>
       <div class="tab-content video" :class="currentTab == 1 ? 'active' : ''">
-
+        <VideoList :showHead="false" />
       </div>
       <div class="tab-content music" :class="currentTab == 2 ? 'active' : ''">
 
@@ -290,7 +290,7 @@
 </style>
 
 <script>
-
+import VideoList from '@/common/components/video/list'
 
 export default {
   data() {
@@ -300,7 +300,7 @@ export default {
   },
 
   components: {
-
+    VideoList
   },
 
   methods: {
