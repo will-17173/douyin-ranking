@@ -1,14 +1,14 @@
 <template>
-    <div class="video-list">
+    <div class="rank-list">
         <div class="head">
-            <div class="title">视频 <span class="title-number">64334条</span></div>
+            <div class="title">播主榜单</div>
             <div class="switch-time">
               <ul>
-                <li class="curent">24小时</li>
-                <li>近7天</li>
+                <li class="curent">综合榜</li>
+                <li>上升榜</li>
               </ul>
             </div>
-            <div class="sort">综合排序</div>
+            <div class="sort">日榜</div>
         </div>
         <div class="list">
             <Item />
@@ -17,7 +17,7 @@
 </template>
 
 <style lang="scss">
-.video-list{
+.rank-list{
     background: #24252a;
     padding:0 15px;
     .head{ 

@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/rank_details/main",
+    "pages/rank/main",
     "pages/music/main",
     "pages/video/main",
     "pages/search/main",
     "pages/index/main"
-    
-    
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -37,7 +37,7 @@
         "selectedIconPath": "/static/img/music-active.png"
       },
       {
-        "pagePath": "pages/index/main",
+        "pagePath": "pages/rank/main",
         "text": "播主排行",
         "iconPath": "/static/img/rank.png",
         "selectedIconPath": "/static/img/rank-active.png"
