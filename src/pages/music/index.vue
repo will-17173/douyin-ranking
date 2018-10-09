@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    
+    <MusicList />
   </div>
 </template>
 
@@ -13,6 +13,7 @@
 </style>
 
 <script>
+import MusicList from '@/common/components/music/list'
 
 export default {
   data() {
@@ -20,6 +21,7 @@ export default {
   },
 
   components: {
+    MusicList
   },
 
   methods: {
