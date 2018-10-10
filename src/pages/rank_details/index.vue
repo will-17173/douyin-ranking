@@ -47,35 +47,37 @@
         
         <div class="chart-box">
           <div class="details-tab">
-            <div class="tab-item active">
+            <div class="tab-item" :class="{active: chartCurrentTab === 0}" @click="switchChartTab(0)">
               粉丝增量趋势图
             </div>
-            <div class="tab-item">
+            <div class="tab-item" :class="{active: chartCurrentTab === 1}" @click="switchChartTab(1)">
               评论增量趋势图
             </div>
-            <div class="tab-item">
+            <div class="tab-item" :class="{active: chartCurrentTab === 2}" @click="switchChartTab(2)">
               转发增量趋势图
             </div>
           </div>
           <div class="chart-area">
-
+            <mpvue-echarts :echarts="echarts" :onInit="onInit" />
           </div>
         </div>
 
         <div class="fans-box">
+
           <div class="fans-title">粉丝画像</div>
           <div class="details-tab">
-            <div class="tab-item active">
+            <div class="tab-item" :class="{active: fansCurrentTab === 0}" @click="switchFansTab(0)">
               性别年龄分布
             </div>
-            <div class="tab-item">
+            <div class="tab-item" :class="{active: fansCurrentTab === 1}" @click="switchFansTab(1)">
               地域分布
             </div>
-            <div class="tab-item">
+            <div class="tab-item" :class="{active: fansCurrentTab === 2}" @click="switchFansTab(2)">
               星座分布
             </div>
           </div>
-          <div class="gender-section">
+
+          <div class="gender-section" v-if="fansCurrentTab === 0">
             <div class="gender-content">
               <div class="gender-icons">
                   <div class="icons text-left"></div>
@@ -98,7 +100,7 @@
             <div class="btns-share">生成图片分享到朋友圈</div>
           </div>
           
-          <div class="location-section">
+          <div class="location-section" v-if="fansCurrentTab === 1">
             <table class="location-table">
               <thead>
                 <tr>
@@ -151,7 +153,7 @@
             </table>
           </div>
 
-          <div class="zodiac-section">
+          <div class="zodiac-section" v-if="fansCurrentTab === 2">
             <ul>
               <li>
                 <div class="zodiac-name"><span class="icon icon-taurus"></span>金牛座</div>
@@ -239,6 +241,7 @@
               </li>  
             </ul>
           </div>
+
         </div>
         
         <div class="viedo-hot">
@@ -293,6 +296,16 @@
 
 <style lang="scss">
 @import '@/common/scss/style.scss';
+
+@keyframes easeHeight {
+  0% {
+      width: 0
+  }
+
+  100% {
+      height: 100%;
+  }
+}
 
 .container {
   
@@ -717,16 +730,70 @@
 </style>
 
 <script>
+import * as echarts from '~/js/echarts.simple.min'
+import mpvueEcharts from 'mpvue-echarts'
+
+let chart = null;
+function initChart (canvas, width, height) {
+  const chart = echarts.init(canvas, null, {
+    width: width,
+    height: height
+  })
+  canvas.setChart(chart)
+  var option = {
+    backgroundColor: '#fff',
+    color: ['#37A2DA'],
+    tooltip: {
+      trigger: 'axis'
+    },
+    legend: {
+      data: ['A商品']
+    },
+    grid: {
+      containLabel: true
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: true,
+      data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+    },
+    yAxis: {
+      x: 'center',
+      type: 'value'
+    },
+    series: [{
+      name: 'A商品',
+      type: 'line',
+      smooth: true,
+      data: [18, 36, 65, 30, 78, 40, 33]
+    }]
+  }
+  chart.setOption(option)
+  return chart
+}
+
 
 export default {
   data() {
-    return {};
+    return {
+      fansCurrentTab: 0,
+      chartCurrentTab: 0,
+      echarts,
+      onInit: initChart
+    };
   },
 
   components: {
+    mpvueEcharts
   },
 
   methods: {
+    switchFansTab(i){
+      this.fansCurrentTab = i;
+    },
+    switchChartTab(i){
+      this.chartCurrentTab = i;
+    }
   },
 
   created() {},
