@@ -1,5 +1,5 @@
 <template>
-    <div class="item">
+    <div class="item" @click="viewDetail(1)">
       <div class="img"><img src="/static/img/6.png" alt="" mode="widthFix"></div>
       <div class="text">
         <div class="title">大镜子的原声</div>
@@ -42,6 +42,12 @@
 
 <script>
 export default {
-    
+    methods: {
+      viewDetail(id){
+        wx.navigateTo({
+          url: `/pages/music_details/main?id=${id}`
+        })
+      }
+    }
 }
 </script>

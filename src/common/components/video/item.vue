@@ -1,5 +1,5 @@
 <template>
-  <div class="item">
+  <div class="item" @click="viewDetail(itemData.id)">
       <div class="img"><img :src="itemData.img" alt="" mode="widthFix"></div>
       <div class="text">
         <div class="v-title">{{itemData.title}}</div>
@@ -110,6 +110,13 @@ export default {
     },
     time(){
       return timeAgo(this.itemData.createAt)
+    }
+  },
+  methods: {
+    viewDetail(id){
+      wx.navigateTo({
+        url: `/pages/video_details/main?id=${id}`
+      })
     }
   }
     

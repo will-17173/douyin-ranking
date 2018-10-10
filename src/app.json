@@ -1,12 +1,13 @@
 {
   "pages": [
+    "pages/index/main",
     "pages/rank_details/main",
     "pages/video_details/main",
     "pages/rank/main",
     "pages/music/main",
     "pages/video/main",
     "pages/search/main",
-    "pages/index/main",
+    
     "pages/music_details/main"
     
   ],
