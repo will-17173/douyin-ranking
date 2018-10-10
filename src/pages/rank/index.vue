@@ -8,7 +8,7 @@
       </ul>
     </div>
     <div class="content">
-      <RankcList />
+      <RankList />
     </div>
   </div>
 </template>
@@ -67,7 +67,7 @@
 
 <script>
 import SYSTEM from '@/utils/system';
-import RankcList from '@/common/components/rank/list'
+import RankList from '@/common/components/rank/list'
 
 export default {
   data() {
@@ -153,7 +153,7 @@ export default {
   },
 
   components: {
-    RankcList
+    RankList
   },
 
   methods: {

@@ -47,62 +47,249 @@
         
         <div class="chart-box">
           <div class="details-tab">
-            <div class="tab-item active">
+            <div class="tab-item" :class="{active: chartCurrentTab === 0}" @click="switchChartTab(0)">
               粉丝增量趋势图
             </div>
-            <div class="tab-item">
+            <div class="tab-item" :class="{active: chartCurrentTab === 1}" @click="switchChartTab(1)">
               评论增量趋势图
             </div>
-            <div class="tab-item">
+            <div class="tab-item" :class="{active: chartCurrentTab === 2}" @click="switchChartTab(2)">
               转发增量趋势图
             </div>
           </div>
           <div class="chart-area">
-
+            <mpvue-echarts :echarts="echarts" :onInit="onInit" />
           </div>
         </div>
 
         <div class="fans-box">
+
           <div class="fans-title">粉丝画像</div>
           <div class="details-tab">
-            <div class="tab-item active">
+            <div class="tab-item" :class="{active: fansCurrentTab === 0}" @click="switchFansTab(0)">
               性别年龄分布
             </div>
-            <div class="tab-item">
+            <div class="tab-item" :class="{active: fansCurrentTab === 1}" @click="switchFansTab(1)">
               地域分布
             </div>
-            <div class="tab-item">
+            <div class="tab-item" :class="{active: fansCurrentTab === 2}" @click="switchFansTab(2)">
               星座分布
             </div>
           </div>
-          <div class="gender-section">
-              <div class="section-content">
-                  <div class="gender-icons">
-                      <div class="text-left">
-                          <img src="images/video/male.png" alt="">
-                      </div>
-                      <div class="text-right">
-                          <img src="images/video/female.png" alt="">
-                      </div>
+
+          <div class="gender-section" v-if="fansCurrentTab === 0">
+            <div class="gender-content">
+              <div class="gender-icons">
+                  <div class="icons text-left"></div>
+                  <div class="icons text-right"></div>
+              </div>
+              <div class="scale">
+                  <div class="scale-male" style="width: 55.5%;"></div>
+              </div>
+              <div class="gender-text">
+                  <div class="text text-left">
+                      男
+                      <br><span>57.3%</span>
                   </div>
-                  <div class="scale">
-                      <div class="scale-male" style="width: 55.5%;"></div>
-                  </div>
-                  <div class="gender-text">
-                      <div class="">
-                          男
-                          <br>57.3%
-                      </div>
-                      <div class="text-right">
-                          女
-                          <br>57.3%
-                      </div>
+                  <div class="text text-right">
+                      女
+                      <br><span>57.3%</span>
                   </div>
               </div>
+            </div>
+            <div class="btns-share">生成图片分享到朋友圈</div>
+          </div>
+          
+          <div class="location-section" v-if="fansCurrentTab === 1">
+            <table class="location-table">
+              <thead>
+                <tr>
+                    <td>名称</td>
+                    <td>占比</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td>广东</td>
+                    <td>10.39%</td>
+                </tr>
+                <tr>
+                    <td>广东</td>
+                    <td>10.39%</td>
+                </tr>
+                <tr>
+                    <td>广东</td>
+                    <td>10.39%</td>
+                </tr>
+                <tr>
+                    <td>广东</td>
+                    <td>10.39%</td>
+                </tr>
+                <tr>
+                    <td>广东</td>
+                    <td>10.39%</td>
+                </tr>
+                <tr>
+                    <td>广东</td>
+                    <td>10.39%</td>
+                </tr>
+                <tr>
+                    <td>广东</td>
+                    <td>10.39%</td>
+                </tr>
+                <tr>
+                    <td>广东</td>
+                    <td>10.39%</td>
+                </tr>
+                <tr>
+                    <td>广东</td>
+                    <td>10.39%</td>
+                </tr>
+                <tr>
+                    <td>广东</td>
+                    <td>10.39%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="zodiac-section" v-if="fansCurrentTab === 2">
+            <ul>
+              <li>
+                <div class="zodiac-name"><span class="icon icon-taurus"></span>金牛座</div>
+                <div class="zodiac-scale">
+                    <div class="scale-inner" style="width: 100%;"></div>
+                </div>
+                <div class="zodiac-percent">100.00%</div>
+              </li>
+              <li>
+                <div class="zodiac-name"><span class="icon icon-gemini"></span>双子座</div>
+                <div class="zodiac-scale">
+                    <div class="scale-inner" style="width: 33%;"></div>
+                </div>
+                <div class="zodiac-percent">10.39%</div>
+              </li>
+              <li>
+                <div class="zodiac-name"><span class="icon icon-pisces"></span>双鱼座</div>
+                <div class="zodiac-scale">
+                    <div class="scale-inner" style="width: 33%;"></div>
+                </div>
+                <div class="zodiac-percent">10.39%</div>
+              </li>
+              <li>
+                <div class="zodiac-name"><span class="icon icon-virgo"></span>处女座</div>
+                <div class="zodiac-scale">
+                    <div class="scale-inner" style="width: 33%;"></div>
+                </div>
+                <div class="zodiac-percent">10.39%</div>
+              </li>
+              <li>
+                <div class="zodiac-name"><span class="icon icon-libra"></span>天秤座</div>
+                <div class="zodiac-scale">
+                    <div class="scale-inner" style="width: 33%;"></div>
+                </div>
+                <div class="zodiac-percent">10.39%</div>
+              </li>
+              <li>
+                <div class="zodiac-name"><span class="icon icon-scorpio"></span>天蝎座</div>
+                <div class="zodiac-scale">
+                    <div class="scale-inner" style="width: 33%;"></div>
+                </div>
+                <div class="zodiac-percent">10.39%</div>
+              </li>
+              <li>
+                <div class="zodiac-name"><span class="icon icon-cancer"></span>巨蟹座</div>
+                <div class="zodiac-scale">
+                    <div class="scale-inner" style="width: 33%;"></div>
+                </div>
+                <div class="zodiac-percent">10.39%</div>
+              </li>
+              <li>
+                <div class="zodiac-name"><span class="icon icon-sagittarius"></span>射手座</div>
+                <div class="zodiac-scale">
+                    <div class="scale-inner" style="width: 33%;"></div>
+                </div>
+                <div class="zodiac-percent">10.39%</div>
+              </li>
+              <li>
+                <div class="zodiac-name"><span class="icon icon-capricorn"></span>摩羯座</div>
+                <div class="zodiac-scale">
+                    <div class="scale-inner" style="width: 33%;"></div>
+                </div>
+                <div class="zodiac-percent">10.39%</div>
+              </li>
+              <li>
+                <div class="zodiac-name"><span class="icon icon-aquarius"></span>水瓶座</div>
+                <div class="zodiac-scale">
+                    <div class="scale-inner" style="width: 33%;"></div>
+                </div>
+                <div class="zodiac-percent">10.39%</div>
+              </li>
+              <li>
+                <div class="zodiac-name"><span class="icon icon-Aries"></span>牧羊座</div>
+                <div class="zodiac-scale">
+                    <div class="scale-inner" style="width: 33%;"></div>
+                </div>
+                <div class="zodiac-percent">10.39%</div>
+              </li>
+              <li>
+                <div class="zodiac-name"><span class="icon icon-leo"></span>狮子座</div>
+                <div class="zodiac-scale">
+                    <div class="scale-inner" style="width: 33%;"></div>
+                </div>
+                <div class="zodiac-percent">10.39%</div>
+              </li>  
+            </ul>
+          </div>
+
+        </div>
+        
+        <div class="viedo-hot">
+          <div class="title">
+            热门视频
+            <span>全部2342</span>
+          </div>
+          <div class="hot-tab">
+            <ul>
+              <li class="active">最热</li>
+              <li>最新</li>
+            </ul>
+          </div>
+          <div class="content">
+            <div class="item">
+              <div class="img"><img src="/static/img/1.png" alt="" mode="widthFix"></div>
+              <div class="text">10月8日</div>
+              <div class="tag">99.9</div>
+            </div>
+            <div class="item">
+              <div class="img"><img src="/static/img/1.png" alt="" mode="widthFix"></div>
+              <div class="text">10月8日</div>
+              <div class="tag">99.9</div>
+            </div>
+            <div class="item">
+              <div class="img"><img src="/static/img/1.png" alt="" mode="widthFix"></div>
+              <div class="text">10月8日</div>
+              <div class="tag">99.9</div>
+            </div>
+            <div class="item">
+              <div class="img"><img src="/static/img/1.png" alt="" mode="widthFix"></div>
+              <div class="text">10月8日</div>
+              <div class="tag">99.9</div>
+            </div>
+            <div class="item">
+              <div class="img"><img src="/static/img/1.png" alt="" mode="widthFix"></div>
+              <div class="text">10月8日</div>
+              <div class="tag">99.9</div>
+            </div>
+            <div class="item">
+              <div class="img"><img src="/static/img/1.png" alt="" mode="widthFix"></div>
+              <div class="text">10月8日</div>
+              <div class="tag">99.9</div>
+            </div>
           </div>
         </div>
-
       </div>
+      
     </div>
   </div>
 </template>
@@ -110,7 +297,18 @@
 <style lang="scss">
 @import '@/common/scss/style.scss';
 
+@keyframes easeHeight {
+  0% {
+      width: 0
+  }
+
+  100% {
+      height: 100%;
+  }
+}
+
 .container {
+  
   .update-time{
     background:#24252a;
     height:25px;
@@ -251,11 +449,13 @@
       }
       .chart-area{ height: 200px;}
       .fans-box{ 
-        border-bottom: 1px solid #32333c;
         padding: 0 15px;
+        .details-tab{padding:10px 0;}
         .fans-title{
           font-size:16px;
           color:#ffffff;
+          border-bottom: 1px solid #32333c;
+          padding-bottom: 16px;
           &::before{
             background: url(../../common/assets/img/fans-icon.png) no-repeat;
             background-size: 16px 16px;
@@ -266,23 +466,263 @@
         }
       }
       .gender-section {
-        height: 150px;
+        padding-top: 20px;
+        max-width: 232px;
+        margin: 0 auto 25px;
+        .gender-content{ margin-bottom: 20px;}
         .gender-icons {
-          padding-top: 30px;
-          margin: 0;
+          display: flex;
+          .icons{ flex: 1;}
+          &::before{
+            background: url(../../common/assets/img/male.png) no-repeat;
+            background-size: 15px 38px;
+            width: 15px;
+            height: 38px;
+            content: "";
+            display: inline-block;
+            }
+          &::after{
+            background: url(../../common/assets/img/female.png) no-repeat;
+            background-size: 18px 38px;
+            width: 18px;
+            height: 38px;
+            content: "";
+            display: inline-block;
+            }
         }
         .scale {
-          background: #95de64;
+          background:rgba(255,255,255,0.60);
           width: 100%;
-          height: 13px;
-          margin-top: 20px;
+          height: 16px;
+          margin: 20px 0 6px 0;
         }
         .scale .scale-male {
-          background: #52c41a;
-          height: 13px;
+          background:#facd13;
+          height: 16px;
           animation: easeHeight 0.8s 0s;
+          position: relative;
+          &::after{
+            background:#4e4e4e;
+            width:1px;
+            height: 30px;
+            content: "";
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            top: -7px;
+          }
+        }
+        .gender-text {
+          font-size: 13px;
+          display: flex;
+          color: #949596;
+          .text{
+            flex: 1;
+            span{font-size:20px;}
+          }
+          .text-left{
+            span{ color:#facd13;}
+          }
+          .text-right{ text-align: right;}
         }
       }
+      .btns-share{ background:#facd13;
+        border:1px solid rgba(5,5,5,0.08);
+        border-radius:5px;
+        width:100%;
+        height:45px;
+        line-height: 45px;
+        font-size:18px;
+        color:#ffffff;
+        text-align:center;
+        margin-bottom: 8px;
+      }
+      .location-table {
+        color: #949596;
+        font-size: 12px;
+        td {
+          text-align: center;
+          display: inline-block;
+          width: 40%;
+          height: 37px;
+          line-height: 37px;
+          &:first-child{ color: #fff; font-size: 16px;
+          text-align: left; padding-left: 10%;}
+          &:last-child{ text-align: right; padding-right: 10%;}
+        }
+        thead tr,tbody tr{
+        border-bottom: 1px solid #32333c;
+        } 
+      }
+
+      .zodiac-section {
+        padding-top: 15px;
+        ul li {
+          padding: 15px 0;
+          display: flex;
+          border-bottom: 1px solid #32333c;
+          .zodiac-name {
+            width: 70px;
+            color: #FACD13;
+            font-size: 14px;
+            .icon {
+              background: url(../../common/assets/img/icon-zodiac.png) no-repeat;
+              background-size: 192px 16px;
+              width: 16px;
+              height: 16px;
+              display: inline-block;
+              position: relative;
+              top: 3px;
+            }
+            .icon-taurus {
+              background-position: -96px 0;
+            }
+            .icon-gemini {
+              background-position: -112px 0;
+            }
+            .icon-pisces {
+              background-position: -128px 0;
+            }
+            .icon-virgo {
+              background-position: -160px 0;
+            }
+            .icon-libra {
+              background-position: -144px 0;
+            }
+            .icon-scorpio {
+              background-position: -176px 0;
+            }
+            .icon-cancer {
+              background-position: -16px 0;
+            }
+            .icon-sagittarius {
+              background-position: 0 0;
+            }
+            .icon-capricorn {
+              background-position: -32px 0;
+            }
+            .icon-aquarius {
+              background-position: -64px 0;
+            }
+            .icon-Aries {
+              background-position: -80px 0;
+            }
+            .icon-leo {
+              background-position: -64px 0;
+            }
+          }
+          .zodiac-scale {
+            flex: 1;
+            background: #24252a;
+            width: 100%;
+            height: 13px;
+            margin-top: 5px;
+            .scale-inner {
+              background: #f9cc31;
+              height: 13px;
+              animation: easeHeight 0.8s 0s;
+            }
+          }
+          .zodiac-percent {
+            width: 60px;
+            line-height: 3px;
+            text-align: right;
+            color: #FFF;
+            font-size: 12px;
+          }
+        }
+
+      }
+
+      .viedo-hot {
+        padding: 0 15px;
+        .title{ padding: 15px 0;
+          font-size:16px;
+          color:#ffffff;
+          border-bottom: 1px solid #32333c;
+          &::before{
+            background: url(../../common/assets/img/title-music.png) no-repeat;
+            background-size: 14px 14px;
+            width: 14px;
+            height: 14px;
+            display: inline-block;
+            vertical-align:middle;
+            content: "";
+            }
+          span{
+            float: right;
+            color: #a1a1a3;
+            font-size:12px; 
+          }
+        }
+        .hot-tab{
+          padding: 15px 0;
+          font-size:14px;
+          color:#a1a2a2;
+          margin-bottom: 15px;
+          li{ margin-right: 15px;
+          float: left;
+          padding-bottom: 8px;
+          &.active{
+            color:#facd13;
+            border-bottom: 2px solid #facd13;
+          }
+          }
+
+        }
+        .content{
+          padding-top: 15px;
+          .item{
+            display: inline-block;
+            margin:0 15px 15px 0;
+            position: relative;
+            &:nth-child(3n){ margin-right: 0;}
+            .img{
+              img{
+                width: 104px;
+                height: 137px;
+                border: 1px solid #fff;
+                border-radius: 4px;
+              }
+            }
+            .text{
+              padding-top: 5px;
+              font-size: 14px;
+              color: #fff;
+            }
+            .tag{
+              background:#facd13;
+              width: 42px;
+              height: 18px;
+              position: absolute;
+              top: 0;
+              left: 0;
+              border-top-left-radius: 4px;
+              border-bottom-right-radius: 4px;
+              font-size: 12px;
+              color: #fff;
+              line-height: 18px;
+              padding-left: 14px;
+              box-sizing: border-box;
+              &:before{
+                content: ' ';
+                width: 7px;
+                height: 10px;
+                background: url(../../common/assets/img/fire.png) no-repeat;
+                background-size: 7px 10px;
+                position: absolute;
+                top: 4px;
+                left: 4px;
+                
+                
+              }  
+            }
+          }
+
+        }
+      }
+
+
     }
   }
   
@@ -290,16 +730,70 @@
 </style>
 
 <script>
+import * as echarts from '~/js/echarts.simple.min'
+import mpvueEcharts from 'mpvue-echarts'
+
+let chart = null;
+function initChart (canvas, width, height) {
+  const chart = echarts.init(canvas, null, {
+    width: width,
+    height: height
+  })
+  canvas.setChart(chart)
+  var option = {
+    backgroundColor: '#fff',
+    color: ['#37A2DA'],
+    tooltip: {
+      trigger: 'axis'
+    },
+    legend: {
+      data: ['A商品']
+    },
+    grid: {
+      containLabel: true
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: true,
+      data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+    },
+    yAxis: {
+      x: 'center',
+      type: 'value'
+    },
+    series: [{
+      name: 'A商品',
+      type: 'line',
+      smooth: true,
+      data: [18, 36, 65, 30, 78, 40, 33]
+    }]
+  }
+  chart.setOption(option)
+  return chart
+}
+
 
 export default {
   data() {
-    return {};
+    return {
+      fansCurrentTab: 0,
+      chartCurrentTab: 0,
+      echarts,
+      onInit: initChart
+    };
   },
 
   components: {
+    mpvueEcharts
   },
 
   methods: {
+    switchFansTab(i){
+      this.fansCurrentTab = i;
+    },
+    switchChartTab(i){
+      this.chartCurrentTab = i;
+    }
   },
 
   created() {},

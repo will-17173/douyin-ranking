@@ -10,28 +10,30 @@
 </template>
 
 <style lang="scss">
-.item{
-  border-bottom: 1px solid #32333c;
-  padding: 12px 0;
-  display: flex;
-  .img{
-    width: 80px;
-    height: 80px;
-    border: 1px solid #fff;
-    margin-right: 15px;
-    border-radius: 4px;
-    img{
+.music-list{
+  .item{
+    border-bottom: 1px solid #32333c;
+    padding: 12px 0;
+    display: flex;
+    .img{
       width: 80px;
       height: 80px;
+      border: 1px solid #fff;
+      margin-right: 15px;
+      border-radius: 4px;
+      img{
+        width: 80px;
+        height: 80px;
+      }
     }
-  }
-  .text{
-    flex: 1;
-    font-size: 12px;
-    color:#ffffff;
-    padding: 8px 0;
-    .title{font-size:16px; padding-bottom: 8px;}
-    p{opacity:0.6; padding-bottom: 8px;}
+    .text{
+      flex: 1;
+      font-size: 12px;
+      color:#ffffff;
+      padding: 8px 0;
+      .title{font-size:16px; padding-bottom: 8px;}
+      p{opacity:0.6; padding-bottom: 8px;}
+    }
   }
 }
 </style>
