@@ -15,7 +15,7 @@
           </ul>
         </div>
       </div>
-      <div class="44">2222</div>
+      
       <div class="hd-tag">
         <ul>
           <li>公主</li>
@@ -42,7 +42,7 @@
 .container {
   .video-details-hd{
     background: #1d1e20;
-    padding: 20px 15px;
+    padding: 20px 15px 0;
     .hd-item{
       display: flex;
       margin-bottom: 16px;
@@ -107,9 +107,11 @@
           }
         }
       }
-    }  
+    } 
+    
     .hd-tag{
       padding: 16px 0 10px;
+      border-top: 1px solid #32333c;
       ul li{
         display: inline-block;
         background:#32333c;
@@ -117,7 +119,8 @@
         padding: 0 10px;
         height:20px;
         line-height: 20px;
-        color: #fff;
+        font-size:12px;
+        color:#888888;
         margin:0 6px 6px 0;
       }
     }   
