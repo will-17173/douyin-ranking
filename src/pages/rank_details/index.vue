@@ -58,7 +58,7 @@
             </div>
           </div>
           <div class="chart-area">
-            <mpvue-echarts :echarts="echarts" :onInit="onInit" />
+            <mpvue-echarts :echarts="echarts" :onInit="ecLineInit" canvasId="line" />
           </div>
         </div>
 
@@ -95,6 +95,9 @@
                       女
                       <br><span>57.3%</span>
                   </div>
+              </div>
+              <div style="height: 240px; ">
+                <mpvue-echarts :echarts="echarts" :onInit="ecPieInit" canvasId="pie" />
               </div>
             </div>
             <div class="btns-share">生成图片分享到朋友圈</div>
@@ -244,50 +247,8 @@
 
         </div>
         
-        <div class="viedo-hot">
-          <div class="title">
-            热门视频
-            <span>全部2342</span>
-          </div>
-          <div class="hot-tab">
-            <ul>
-              <li class="active">最热</li>
-              <li>最新</li>
-            </ul>
-          </div>
-          <div class="content">
-            <div class="item">
-              <div class="img"><img src="/static/img/1.png" alt="" mode="widthFix"></div>
-              <div class="text">10月8日</div>
-              <div class="tag">99.9</div>
-            </div>
-            <div class="item">
-              <div class="img"><img src="/static/img/1.png" alt="" mode="widthFix"></div>
-              <div class="text">10月8日</div>
-              <div class="tag">99.9</div>
-            </div>
-            <div class="item">
-              <div class="img"><img src="/static/img/1.png" alt="" mode="widthFix"></div>
-              <div class="text">10月8日</div>
-              <div class="tag">99.9</div>
-            </div>
-            <div class="item">
-              <div class="img"><img src="/static/img/1.png" alt="" mode="widthFix"></div>
-              <div class="text">10月8日</div>
-              <div class="tag">99.9</div>
-            </div>
-            <div class="item">
-              <div class="img"><img src="/static/img/1.png" alt="" mode="widthFix"></div>
-              <div class="text">10月8日</div>
-              <div class="tag">99.9</div>
-            </div>
-            <div class="item">
-              <div class="img"><img src="/static/img/1.png" alt="" mode="widthFix"></div>
-              <div class="text">10月8日</div>
-              <div class="tag">99.9</div>
-            </div>
-          </div>
-        </div>
+        <VideoWidget />
+
       </div>
       
     </div>
@@ -299,164 +260,185 @@
 
 @keyframes easeHeight {
   0% {
-      width: 0
+    width: 0;
   }
 
   100% {
-      height: 100%;
+    height: 100%;
   }
 }
 
 .container {
-  
-  .update-time{
-    background:#24252a;
-    height:25px;
+  .update-time {
+    background: #24252a;
+    height: 25px;
     line-height: 25px;
     text-align: center;
-    font-size:12px;
-    color:#ffffff;
+    font-size: 12px;
+    color: #ffffff;
     border-bottom: 1px solid #32333c;
-    opacity:0.6;
+    opacity: 0.6;
   }
-  .details-content{
-    .details-head{ 
+  .details-content {
+    .details-head {
       padding: 15px 0;
       display: flex;
-      .head-l{
+      .head-l {
         width: 128px;
         border-right: 1px solid #32333c;
         text-align: center;
-        .img{border:1px solid #ffffff;
-          width:70px;
-          height:70px;
-          border-radius:100%;
+        .img {
+          border: 1px solid #ffffff;
+          width: 70px;
+          height: 70px;
+          border-radius: 100%;
           margin: 0 auto 15px;
-          img{
-            width:70px;
-            height:70px;
+          img {
+            width: 70px;
+            height: 70px;
           }
         }
-        .category{
-          font-size:11px;
-          color:#ffffff;
+        .category {
+          font-size: 11px;
+          color: #ffffff;
           padding-bottom: 5px;
-          }
-        .rank{
-          font-size:14px;
-          color:#facd13;
-          }
+        }
+        .rank {
+          font-size: 14px;
+          color: #facd13;
+        }
       }
-      .head-r{
+      .head-r {
         flex: 1;
-        padding:8px 25px 0 25px;
-        .title{
-          font-size:16px;
-          color:#ffffff;
+        padding: 8px 25px 0 25px;
+        .title {
+          font-size: 16px;
+          color: #ffffff;
           margin-bottom: 10px;
-          .tag{
-          border:1px solid #facd13;
-          border-radius:2px;
-          padding:0 5px;
-          font-size:12px;
-          color:#facd13;
-          line-height: 18px;
-          margin-left: 8px;
+          .tag {
+            border: 1px solid #facd13;
+            border-radius: 2px;
+            padding: 0 5px;
+            font-size: 12px;
+            color: #facd13;
+            line-height: 18px;
+            margin-left: 8px;
           }
         }
-        .a-info{font-size:11px;
-          color:#ffffff;
-          line-height:22px;
+        .a-info {
+          font-size: 11px;
+          color: #ffffff;
+          line-height: 22px;
           margin-bottom: 20px;
-          opacity:0.6;
-          dd:nth-child(n){
+          opacity: 0.6;
+          dd:nth-child(n) {
             width: 60%;
             display: inline-block;
           }
-          dd:nth-child(2n){
-            width:40%;
+          dd:nth-child(2n) {
+            width: 40%;
             display: inline-block;
           }
         }
-        .intro{
-          font-size:11px;
-          color:#ffffff;
+        .intro {
+          font-size: 11px;
+          color: #ffffff;
         }
       }
     }
-    .details-body{
-      .info-list{
-        border-top: 1px solid #32333c; 
+    .details-body {
+      .info-list {
+        border-top: 1px solid #32333c;
         margin: 0 15px;
-        font-size:12px;
-        color:#a7a8aa;
-        border-bottom: 1px solid #32333c; 
+        font-size: 12px;
+        color: #a7a8aa;
+        border-bottom: 1px solid #32333c;
         display: flex;
         padding: 16px 0;
         text-align: left;
-        dl{
-          dt{ margin-bottom: 8px;}
-          dd{ color: #fff;
-            .percentage{
-              font-size:21px;
-              color:#facd13;
+        dl {
+          dt {
+            margin-bottom: 8px;
+          }
+          dd {
+            color: #fff;
+            .percentage {
+              font-size: 21px;
+              color: #facd13;
               margin-right: 5px;
             }
           }
-          &:nth-child(1){ width: 100px;} 
-          &:nth-child(2){ flex: 1;}
-          &:nth-child(3){ width: 110px;}
-        }  
+          &:nth-child(1) {
+            width: 100px;
+          }
+          &:nth-child(2) {
+            flex: 1;
+          }
+          &:nth-child(3) {
+            width: 110px;
+          }
+        }
       }
-      .info-results{
-        border-bottom: 1px solid #32333c; 
+      .info-results {
+        border-bottom: 1px solid #32333c;
         padding: 0 15px;
-        font-size: 12px; 
-        color:#fff;
-        li{
+        font-size: 12px;
+        color: #fff;
+        li {
           padding: 10px 0;
-          border-bottom: 1px solid #32333c; 
-          .numerical{
-            font-size:16px;
+          border-bottom: 1px solid #32333c;
+          .numerical {
+            font-size: 16px;
             margin-right: 5px;
           }
-          .results{
-            color:#a7a8aa;
+          .results {
+            color: #a7a8aa;
             float: right;
           }
-          &:last-child{border-bottom: none;}
+          &:last-child {
+            border-bottom: none;
+          }
         }
-        
       }
-      .details-tab{
+      .details-tab {
         display: flex;
-        padding:10px 15px;
-        .tab-item{
+        padding: 10px 15px;
+        .tab-item {
           text-align: center;
           color: #949596;
           height: 30px;
           line-height: 30px;
           padding-bottom: 5px;
           font-size: 14px;
-          &:nth-child(1){ width: 100px;}
-          &:nth-child(2){ flex:1;}
-          &:nth-child(3){ width: 100px;}
-          &.active{
-            color:#facd13;
+          &:nth-child(1) {
+            width: 100px;
+          }
+          &:nth-child(2) {
+            flex: 1;
+          }
+          &:nth-child(3) {
+            width: 100px;
+          }
+          &.active {
+            color: #facd13;
             border-bottom: 2px solid #facd13;
           }
         }
       }
-      .chart-area{ height: 200px;}
-      .fans-box{ 
+      .chart-area {
+        height: 200px;
+      }
+      .fans-box {
         padding: 0 15px;
-        .details-tab{padding:10px 0;}
-        .fans-title{
-          font-size:16px;
-          color:#ffffff;
+        .details-tab {
+          padding: 10px 0;
+        }
+        .fans-title {
+          font-size: 16px;
+          color: #ffffff;
           border-bottom: 1px solid #32333c;
           padding-bottom: 16px;
-          &::before{
+          &::before {
             background: url(../../common/assets/img/fans-icon.png) no-repeat;
             background-size: 16px 16px;
             width: 16px;
@@ -466,46 +448,47 @@
         }
       }
       .gender-section {
-        padding-top: 20px;
-        max-width: 232px;
-        margin: 0 auto 25px;
-        .gender-content{ margin-bottom: 20px;}
+        .gender-content {
+          padding: 20px 10% 0;
+        }
         .gender-icons {
           display: flex;
-          .icons{ flex: 1;}
-          &::before{
+          .icons {
+            flex: 1;
+          }
+          &::before {
             background: url(../../common/assets/img/male.png) no-repeat;
             background-size: 15px 38px;
             width: 15px;
             height: 38px;
-            content: "";
+            content: '';
             display: inline-block;
-            }
-          &::after{
+          }
+          &::after {
             background: url(../../common/assets/img/female.png) no-repeat;
             background-size: 18px 38px;
             width: 18px;
             height: 38px;
-            content: "";
+            content: '';
             display: inline-block;
-            }
+          }
         }
         .scale {
-          background:rgba(255,255,255,0.60);
+          background: rgba(255, 255, 255, 0.6);
           width: 100%;
           height: 16px;
           margin: 20px 0 6px 0;
         }
         .scale .scale-male {
-          background:#facd13;
+          background: #facd13;
           height: 16px;
           animation: easeHeight 0.8s 0s;
           position: relative;
-          &::after{
-            background:#4e4e4e;
-            width:1px;
+          &::after {
+            background: #4e4e4e;
+            width: 1px;
             height: 30px;
-            content: "";
+            content: '';
             display: inline-block;
             position: absolute;
             right: 0;
@@ -516,25 +499,32 @@
           font-size: 13px;
           display: flex;
           color: #949596;
-          .text{
+          .text {
             flex: 1;
-            span{font-size:20px;}
+            span {
+              font-size: 20px;
+            }
           }
-          .text-left{
-            span{ color:#facd13;}
+          .text-left {
+            span {
+              color: #facd13;
+            }
           }
-          .text-right{ text-align: right;}
+          .text-right {
+            text-align: right;
+          }
         }
       }
-      .btns-share{ background:#facd13;
-        border:1px solid rgba(5,5,5,0.08);
-        border-radius:5px;
-        width:100%;
-        height:45px;
+      .btns-share {
+        background: #facd13;
+        border: 1px solid rgba(5, 5, 5, 0.08);
+        border-radius: 5px;
+        width: 100%;
+        height: 45px;
         line-height: 45px;
-        font-size:18px;
-        color:#ffffff;
-        text-align:center;
+        font-size: 18px;
+        color: #ffffff;
+        text-align: center;
         margin-bottom: 8px;
       }
       .location-table {
@@ -546,13 +536,21 @@
           width: 40%;
           height: 37px;
           line-height: 37px;
-          &:first-child{ color: #fff; font-size: 16px;
-          text-align: left; padding-left: 10%;}
-          &:last-child{ text-align: right; padding-right: 10%;}
+          &:first-child {
+            color: #fff;
+            font-size: 16px;
+            text-align: left;
+            padding-left: 10%;
+          }
+          &:last-child {
+            text-align: right;
+            padding-right: 10%;
+          }
         }
-        thead tr,tbody tr{
-        border-bottom: 1px solid #32333c;
-        } 
+        thead tr,
+        tbody tr {
+          border-bottom: 1px solid #32333c;
+        }
       }
 
       .zodiac-section {
@@ -563,7 +561,7 @@
           border-bottom: 1px solid #32333c;
           .zodiac-name {
             width: 70px;
-            color: #FACD13;
+            color: #facd13;
             font-size: 14px;
             .icon {
               background: url(../../common/assets/img/icon-zodiac.png) no-repeat;
@@ -627,151 +625,106 @@
             width: 60px;
             line-height: 3px;
             text-align: right;
-            color: #FFF;
+            color: #fff;
             font-size: 12px;
+            margin-top: 10px;
           }
-        }
-
-      }
-
-      .viedo-hot {
-        padding: 0 15px;
-        .title{ padding: 15px 0;
-          font-size:16px;
-          color:#ffffff;
-          border-bottom: 1px solid #32333c;
-          &::before{
-            background: url(../../common/assets/img/title-music.png) no-repeat;
-            background-size: 14px 14px;
-            width: 14px;
-            height: 14px;
-            display: inline-block;
-            vertical-align:middle;
-            content: "";
-            }
-          span{
-            float: right;
-            color: #a1a1a3;
-            font-size:12px; 
-          }
-        }
-        .hot-tab{
-          padding: 15px 0;
-          font-size:14px;
-          color:#a1a2a2;
-          margin-bottom: 15px;
-          li{ margin-right: 15px;
-          float: left;
-          padding-bottom: 8px;
-          &.active{
-            color:#facd13;
-            border-bottom: 2px solid #facd13;
-          }
-          }
-
-        }
-        .content{
-          padding-top: 15px;
-          .item{
-            display: inline-block;
-            margin:0 15px 15px 0;
-            position: relative;
-            &:nth-child(3n){ margin-right: 0;}
-            .img{
-              img{
-                width: 104px;
-                height: 137px;
-                border: 1px solid #fff;
-                border-radius: 4px;
-              }
-            }
-            .text{
-              padding-top: 5px;
-              font-size: 14px;
-              color: #fff;
-            }
-            .tag{
-              background:#facd13;
-              width: 42px;
-              height: 18px;
-              position: absolute;
-              top: 0;
-              left: 0;
-              border-top-left-radius: 4px;
-              border-bottom-right-radius: 4px;
-              font-size: 12px;
-              color: #fff;
-              line-height: 18px;
-              padding-left: 14px;
-              box-sizing: border-box;
-              &:before{
-                content: ' ';
-                width: 7px;
-                height: 10px;
-                background: url(../../common/assets/img/fire.png) no-repeat;
-                background-size: 7px 10px;
-                position: absolute;
-                top: 4px;
-                left: 4px;
-                
-                
-              }  
-            }
-          }
-
         }
       }
 
 
     }
   }
-  
 }
 </style>
 
 <script>
-import * as echarts from '~/js/echarts.simple.min'
-import mpvueEcharts from 'mpvue-echarts'
+import * as echarts from '~/js/echarts.simple.min';
+import mpvueEcharts from 'mpvue-echarts';
+import VideoWidget from '@/common/components/video-widget'
 
-let chart = null;
-function initChart (canvas, width, height) {
-  const chart = echarts.init(canvas, null, {
-    width: width,
-    height: height
-  })
-  canvas.setChart(chart)
-  var option = {
+let lineChart, pieChart;
+
+function getLineOptions() {
+  return {
     backgroundColor: '#fff',
     color: ['#37A2DA'],
     tooltip: {
-      trigger: 'axis'
+      trigger: 'axis',
     },
     legend: {
-      data: ['A商品']
+      data: ['A商品'],
     },
     grid: {
-      containLabel: true
+      containLabel: true,
     },
     xAxis: {
       type: 'category',
       boundaryGap: true,
-      data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+      data: ['04/01', '04/02', '04/03', '04/04', '04/05', '04/06', '04/07'],
     },
     yAxis: {
       x: 'center',
-      type: 'value'
+      type: 'value',
     },
-    series: [{
-      name: 'A商品',
-      type: 'line',
-      smooth: true,
-      data: [18, 36, 65, 30, 78, 40, 33]
-    }]
-  }
-  chart.setOption(option)
-  return chart
+    series: [
+      {
+        name: 'A商品',
+        type: 'line',
+        smooth: true,
+        data: [18, 36, 65, 30, 78, 40, 33],
+      },
+    ],
+  };
 }
-
+function getPieOptions() {
+  return {
+    tooltip: {
+      trigger: 'item',
+      formatter: '{a} <br/>{b}: {c} ({d}%)',
+    },
+    legend: {
+      orient: 'vertical',
+      x: 'left',
+      data: ['25-30岁', '31-35岁', '36-40岁', '40+岁', '6-17岁','18-24岁'],
+    },
+    colors: ['#555', '#000', '#fff', '#FFC7B8', '#F18686', '#EFC27C'],
+    series: [
+      {
+        name: '年龄分布',
+        type: 'pie',
+        radius: ['50%', '70%'],
+        avoidLabelOverlap: false,
+        label: {
+          normal: {
+            show: true,
+            position: '',
+          },
+          emphasis: {
+            show: true,
+            textStyle: {
+              fontSize: '12',
+              fontWeight: 'bold',
+            },
+          },
+        },
+        labelLine: {
+          normal: {
+            show: false,
+          },
+        },
+        data: [
+          { value: 335, name: '25-30岁' },
+          { value: 310, name: '31-35岁' },
+          { value: 234, name: '36-40岁' },
+          { value: 135, name: '40+岁' },
+          { value: 150, name: '6-17岁' },
+          { value: 1548, name: '18-24岁' },
+        ],
+      },
+    ],
+  };
+}
 
 export default {
   data() {
@@ -779,25 +732,42 @@ export default {
       fansCurrentTab: 0,
       chartCurrentTab: 0,
       echarts,
-      onInit: initChart
+      ecLineInit: function(canvas, width, height) {
+        lineChart = echarts.init(canvas, null, {
+          width: width,
+          height: height,
+        });
+        canvas.setChart(lineChart);
+        lineChart.setOption(getLineOptions());
+        return lineChart;
+      },
+      ecPieInit: function(canvas, width, height) {
+        pieChart = echarts.init(canvas, null, {
+          width: width,
+          height: height,
+        });
+        canvas.setChart(pieChart);
+        pieChart.setOption(getPieOptions());
+        return pieChart;
+      },
     };
   },
 
   components: {
-    mpvueEcharts
+    mpvueEcharts,
+    VideoWidget
   },
 
   methods: {
-    switchFansTab(i){
+    switchFansTab(i) {
       this.fansCurrentTab = i;
     },
-    switchChartTab(i){
+    switchChartTab(i) {
       this.chartCurrentTab = i;
-    }
+    },
   },
 
   created() {},
-  mounted() {
-  },
+  mounted() {},
 };
 </script>

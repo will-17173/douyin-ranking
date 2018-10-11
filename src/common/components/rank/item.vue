@@ -1,5 +1,5 @@
 <template>
-  <div class="item">
+  <div class="item" @click="viewDetail(1)">
      <div class="index index1">01</div>
      <div class="avatar"><img src="/static/img/4.png" alt="" mode="widthFix"></div>
      <div class="name">❤️会说话的刘二豆❤️</div>
@@ -64,6 +64,12 @@
 
 <script>
 export default {
-    
+    methods: {
+      viewDetail(id){
+        wx.navigateTo({
+          url: `/pages/rank_details/main?id=${id}`
+        })
+      }
+    }
 }
 </script>
