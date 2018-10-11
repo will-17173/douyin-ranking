@@ -54,6 +54,7 @@
   .title {
     padding: 15px 0;
     font-size: 16px;
+    line-height: 16px;
     color: #ffffff;
     border-bottom: 1px solid #32333c;
     &::before {

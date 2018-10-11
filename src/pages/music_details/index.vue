@@ -48,8 +48,8 @@
     opacity:0.6;
   }
   .music-details{
-    padding: 0 15px;
     .music-details-hd{
+      padding: 0 15px;
       .item{
         border-bottom: 1px solid #32333c;
         padding: 12px 0;
@@ -79,11 +79,13 @@
       .chart-title{
         border-bottom: 1px solid #32333c;
         padding: 15px 0 10px;
+        margin: 0 15px;
         font-size:12px;
         color:#ffffff;
       }
       .chart-area{
         min-height: 220px;
+        padding: 0 15px;
         img{ width: 350px;
         height: 210px;}
       }

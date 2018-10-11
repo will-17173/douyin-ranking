@@ -96,7 +96,7 @@
                       <br><span>57.3%</span>
                   </div>
               </div>
-              <div style="height: 200px;">
+              <div style="height: 240px; ">
                 <mpvue-echarts :echarts="echarts" :onInit="ecPieInit" canvasId="pie" />
               </div>
             </div>
@@ -448,11 +448,8 @@
         }
       }
       .gender-section {
-        padding-top: 20px;
-        max-width: 232px;
-        margin: 0 auto 25px;
         .gender-content {
-          margin-bottom: 20px;
+          padding: 20px 10% 0;
         }
         .gender-icons {
           display: flex;
@@ -630,6 +627,7 @@
             text-align: right;
             color: #fff;
             font-size: 12px;
+            margin-top: 10px;
           }
         }
       }
@@ -663,7 +661,7 @@ function getLineOptions() {
     xAxis: {
       type: 'category',
       boundaryGap: true,
-      data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+      data: ['04/01', '04/02', '04/03', '04/04', '04/05', '04/06', '04/07'],
     },
     yAxis: {
       x: 'center',
@@ -688,11 +686,12 @@ function getPieOptions() {
     legend: {
       orient: 'vertical',
       x: 'left',
-      data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎'],
+      data: ['25-30岁', '31-35岁', '36-40岁', '40+岁', '6-17岁','18-24岁'],
     },
+    colors: ['#555', '#000', '#fff', '#FFC7B8', '#F18686', '#EFC27C'],
     series: [
       {
-        name: '访问来源',
+        name: '年龄分布',
         type: 'pie',
         radius: ['50%', '70%'],
         avoidLabelOverlap: false,
@@ -704,7 +703,7 @@ function getPieOptions() {
           emphasis: {
             show: true,
             textStyle: {
-              fontSize: '30',
+              fontSize: '12',
               fontWeight: 'bold',
             },
           },
@@ -715,11 +714,12 @@ function getPieOptions() {
           },
         },
         data: [
-          { value: 335, name: '直接访问' },
-          { value: 310, name: '邮件营销' },
-          { value: 234, name: '联盟广告' },
-          { value: 135, name: '视频广告' },
-          { value: 1548, name: '搜索引擎' },
+          { value: 335, name: '25-30岁' },
+          { value: 310, name: '31-35岁' },
+          { value: 234, name: '36-40岁' },
+          { value: 135, name: '40+岁' },
+          { value: 150, name: '6-17岁' },
+          { value: 1548, name: '18-24岁' },
         ],
       },
     ],
