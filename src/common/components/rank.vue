@@ -145,7 +145,7 @@
                 img{
                   margin: 0 auto;
                   display: block;
-                  margin-bottom: 5px;
+                  margin-bottom: 8px;
                 }
               }
               .text{
@@ -157,7 +157,8 @@
                 bottom: 0;
                 left: 0;
                 width: 100%;
-                font-size: 12px;
+                font-size: 10px;
+                opacity:0.7;
                 border-bottom-left-radius: 4px;
                 border-bottom-right-radius: 4px;
               }
