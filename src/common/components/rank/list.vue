@@ -8,7 +8,13 @@
                 <li>上升榜</li>
               </ul>
             </div>
-            <div class="sort">日榜</div>
+            <div class="sort">日榜
+              <ul>
+                <li>日榜</li>
+                <li>周榜</li>
+                <li>月榜</li>
+              </ul>
+            </div>
         </div>
         <div class="list">
             <Item />
@@ -80,6 +86,46 @@
             width: 11px;
             height: 6px;
             transition: all .2s; 
+          }
+           ul{
+            position: absolute;
+            top: 35px;
+            left: 50%;
+            margin-left: -10px;
+            width: 60px;
+            border: 1px solid #32333c;
+            background:#24252a;
+            border-radius: 4px;
+            li{ 
+              border-bottom: 1px solid #32333c; 
+              text-align: center;
+              line-height: 30px;
+              &.active{
+                color: #fff !important;
+              }
+            }
+            &::before{
+              content:"";
+              width:0;
+              height:0;
+              position:absolute;
+              left:27px;
+              top:-6px;
+              border-left:solid 7px transparent;
+              border-bottom:solid 7px #32333c;
+              border-right:solid 7px transparent;
+            }
+            &:after{
+              content:"";
+              width:0;
+              height:0;
+              position:absolute;
+              left:28px;
+              top:-5px;
+              border-left:solid 6px transparent;
+              border-bottom:solid 6px #24252a;
+              border-right:solid 6px transparent;
+            }
           }
         }
     }
