@@ -60,6 +60,7 @@ module.exports = {
       {
         test: /\.js$/,
         include: [resolve('src'), resolve('test')],
+        exclude: [resolve('src/utils/lib')],
         use: [
           'babel-loader',
           {

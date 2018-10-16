@@ -451,7 +451,7 @@
 
 <script>
 
-import * as echarts from '~/js/echarts.simple.min';
+import * as echarts from '@/utils/lib/echarts.simple.min';
 import mpvueEcharts from 'mpvue-echarts';
 
 let lineChart;
