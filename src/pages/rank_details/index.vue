@@ -683,6 +683,7 @@ function getPieOptions() {
       trigger: 'item',
       formatter: '{a} <br/>{b}: {c} ({d}%)',
     },
+   
     legend: {
       orient: 'vertical',
       x: 'left',
