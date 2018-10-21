@@ -298,7 +298,7 @@
           .title{
             font-size:16px;
             color:#ffffff;
-            margin-bottom: 8px;
+            line-height: 25px;
             .tag{
               border:1px solid #facd13;
               border-radius:2px;
@@ -308,13 +308,10 @@
               color: #facd13;
               font-size:11px;
               text-align: center;
-              margin-left: 15px;
+              margin-left: 10px;
             }
           }
-          p{margin-bottom: 8px;
-            &:last-child{
-              margin-bottom: 0;
-            }
+          p{line-height: 20px;
           }
         }
       }
@@ -343,12 +340,9 @@
           .title{
             font-size:16px;
             color:#ffffff;
-            margin-bottom: 8px;
+            line-height: 25px;
           }
-          p{margin-bottom: 8px;
-            &:last-child{
-              margin-bottom: 0;
-            }
+          p{line-height: 20px;
           }
         }
       }
@@ -440,8 +434,7 @@
        .more{
         color:#999999;
         text-align: center;
-        margin-top: 5px;
-        margin-bottom: 20px;
+        margin: 20px 0;
         font-size: 14px;
       }
     }
