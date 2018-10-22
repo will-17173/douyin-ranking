@@ -647,23 +647,39 @@ let lineChart, pieChart;
 
 function getLineOptions() {
   return {
-    backgroundColor: '#fff',
-    color: ['#37A2DA'],
+    color: ['#facd13'],
     tooltip: {
       trigger: 'axis',
     },
-    legend: {
-      data: ['A商品'],
-    },
     grid: {
-      containLabel: true,
+      top: 20,
+      left: 70,
+      containLabel: false,
     },
     xAxis: {
       type: 'category',
       boundaryGap: true,
       data: ['04/01', '04/02', '04/03', '04/04', '04/05', '04/06', '04/07'],
+      axisLine: {
+        lineStyle: {
+          color: '#a0a0a2',
+        }
+      },
+
     },
     yAxis: {
+      // boundaryGap: [0, '100%'],
+      axisLine: {
+        lineStyle: {
+          color: '#a0a0a2',
+        }
+      },
+      splitLine: {
+        lineStyle: {
+          type: 'dashed',
+          color: '#4c4d51'
+        }
+      },
       x: 'center',
       type: 'value',
     },
@@ -671,25 +687,24 @@ function getLineOptions() {
       {
         name: 'A商品',
         type: 'line',
-        smooth: true,
-        data: [18, 36, 65, 30, 78, 40, 33],
+        smooth: false,
+        symbol: 'circle',
+        symbolSize: 10,
+        data: [18554, 3333, 23525, 25225, 2352, 25236, 23235],
+        label: {
+          show: true,
+          color: '#fff',
+          formatter: function(params){
+            return (params.value / 1e4).toFixed(1) + 'w';
+          }
+        }
       },
     ],
   };
 }
 function getPieOptions() {
   return {
-    tooltip: {
-      trigger: 'item',
-      formatter: '{a} <br/>{b}: {c} ({d}%)',
-    },
-   
-    legend: {
-      orient: 'vertical',
-      x: 'left',
-      data: ['25-30岁', '31-35岁', '36-40岁', '40+岁', '6-17岁','18-24岁'],
-    },
-    colors: ['#555', '#000', '#fff', '#FFC7B8', '#F18686', '#EFC27C'],
+    color: ['#f4c982', '#e7e195', '#b8b8b8', '#a3a9ad', '#4f575e', '#f5a623'],
     series: [
       {
         name: '年龄分布',
@@ -699,10 +714,12 @@ function getPieOptions() {
         label: {
           normal: {
             show: true,
-            position: '',
+            position: 'outside',
+            padding: -30
           },
           emphasis: {
             show: true,
+            padding: -20,
             textStyle: {
               fontSize: '12',
               fontWeight: 'bold',
