@@ -665,7 +665,10 @@ function getLineOptions() {
           color: '#a0a0a2',
         }
       },
-
+      axisLabel: {
+        interval:0,  
+        rotate:40
+      }
     },
     yAxis: {
       // boundaryGap: [0, '100%'],
