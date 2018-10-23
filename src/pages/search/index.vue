@@ -55,7 +55,9 @@
           
         </div>
 
+        
         <div class="list-caster">
+          <div class="list-results-bar">共搜索到89个结果</div>
           <div class="item">
             <div class="avatar"><img src="/static/img/4.png" mode="widthFix" alt=""></div>
             <div class="info">
@@ -90,9 +92,10 @@
       </div>
       <div class="tab-content video" :class="currentTab == 1 ? 'active' : ''">
         <VideoList :showHead="false" />
+        <div class="list-results-bar">共搜索到89个结果</div>
       </div>
       <div class="tab-content music" :class="currentTab == 2 ? 'active' : ''">
-
+        <div class="list-results-bar">共搜索到89个结果</div>
       </div>
     </div>
 
@@ -148,7 +151,11 @@
   }
   .content{
     padding: 0 15px;
+    .list-results-bar{ padding: 16px 0; color:#888888; border-bottom: 1rpx solid #32333c; font-size: 12px;}
     .tab-content{
+      .video-list{
+        padding: 0 !important;;
+      }
       display: none;
       &.active{
         display: block;

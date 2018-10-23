@@ -42,7 +42,7 @@
       font-size: 12px;
     }
     .rate{
-      width: 50px;
+      width:80px;
       font-size: 16px;
       color:#facd13;
       font-weight: bold;
